@@ -1,12 +1,33 @@
-﻿<Window x:Class="MainWindow"
+﻿<Window x:Name="mainWindow" x:Class="MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AvorionModManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="Avorion Mod Manager" Height="584" Width="1016">
+    <Grid HorizontalAlignment="Left" Height="555" VerticalAlignment="Top" Width="1010" Margin="0,0,0,-2">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF060E2E" Offset="1"/>
+                <GradientStop Color="#FF29376A" Offset="0.695"/>
+                <GradientStop Color="#FF5C7ED8"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Label Content="Modpacks" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" HorizontalContentAlignment="Center" FontFamily="Lucida Sans Unicode" FontWeight="Bold" FontSize="16" Height="39" Margin="4,-4,0,0"/>
+        <ListBox HorizontalAlignment="Left" Height="514" Margin="7,26,0,0" VerticalAlignment="Top" Width="130" Background="#FF474A6C"/>
+        <ListBox HorizontalAlignment="Left" Height="321" Margin="145,26,0,0" VerticalAlignment="Top" Width="727" Background="#FF7DA0DE" BorderBrush="#FF04174D"/>
+        <ListBox HorizontalAlignment="Left" Height="167" Margin="145,373,0,0" VerticalAlignment="Top" Width="727" BorderBrush="#FF0C1B47" Background="#FF7DA0DE"/>
+        <Button Content="Save Modpack" HorizontalAlignment="Left" Margin="877,502,0,0" VerticalAlignment="Top" Width="117" Height="38" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button Content="Load Modpack" HorizontalAlignment="Left" Margin="877,459,0,0" VerticalAlignment="Top" Width="117" Height="38"/>
+        <Button Content="Install Selected" HorizontalAlignment="Left" Margin="877,26,0,0" VerticalAlignment="Top" Width="117" Height="38"/>
+        <Button Content="Install All" HorizontalAlignment="Left" Margin="877,69,0,0" VerticalAlignment="Top" Width="117" Height="38"/>
+        <ComboBox HorizontalAlignment="Left" Height="32" Margin="877,272,0,0" VerticalAlignment="Top" Width="117"/>
+        <Button Content="Check Compatibility" HorizontalAlignment="Left" Margin="877,309,0,0" VerticalAlignment="Top" Width="117" Height="38"/>
+        <Label Content="Avorion Version:" HorizontalAlignment="Left" Margin="877,246,0,0" VerticalAlignment="Top" Width="117" Foreground="#FFBFFB8C"/>
+        <Label Content="Uninstalled Mods" HorizontalAlignment="Left" Height="26" Margin="145,347,0,0" VerticalAlignment="Top" Width="727" HorizontalContentAlignment="Center" FontWeight="Bold" Foreground="#FFCD3B3B"/>
+        <Label Content="Installed Mods" HorizontalAlignment="Left" Height="26" Margin="150,1,0,0" VerticalAlignment="Top" Width="727" HorizontalContentAlignment="Center" FontWeight="Bold" Foreground="#FF05D60E"/>
+        <Button Content="Uninstall Selected" HorizontalAlignment="Left" Margin="877,112,0,0" VerticalAlignment="Top" Width="117" Height="38"/>
+        <Button Content="Uninstall All" HorizontalAlignment="Left" Margin="877,155,0,0" VerticalAlignment="Top" Width="117" Height="38"/>
     </Grid>
 </Window>
