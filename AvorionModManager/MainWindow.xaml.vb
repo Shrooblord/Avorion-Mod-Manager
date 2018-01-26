@@ -10,6 +10,11 @@ Class MainWindow
 
     ' Clicked the Change Directory button associated with the Avorion Installation Directory
     Private Sub AvorionDirChangeBtn_Click(sender As Object, e As RoutedEventArgs) Handles avorionDirChangeBtn.Click
+        AvoInstallDirChange()
+    End Sub
+
+    ' Open a directory browser that allows you to select a folder, then save the selection to a user setting to store the selected folder for later use
+    Private Sub AvoInstallDirChange()
         ' When this is clicked, open a directory dialog
         Dim avoDirPicker As New CommonOpenFileDialog With {
             .IsFolderPicker = True
@@ -18,6 +23,33 @@ Class MainWindow
         txtAvoDir.Text = avoDirPicker.FileName
         My.Settings.avorionInstallPath = avoDirPicker.FileName
         My.Settings.Save()
+
+        CheckModsFolderExists(avoDirPicker.FileName)
+    End Sub
+
+    ' Check to see if a mods folder exists in the location of the Avorion Installation Directory, and if so, if the mod manager should point to it.
+    ' If not, ask whether it should be created automatically.
+    Private Sub CheckModsFolderExists(path As String)
+        Dim modPath As String
+        modPath = path & "\mods"
+        If Directory.Exists(modPath) Then
+            Dim ask As MsgBoxResult = MsgBox("A mods folder was found in this location. Would you like the mod manager to use this folder?", MsgBoxStyle.YesNo, "Select Mods Folder")
+            If ask = MsgBoxResult.Yes Then
+                txtModsDir.Text = modPath
+                My.Settings.modsFolderPath = modPath
+                My.Settings.Save()
+            End If
+        Else
+            Dim ask As MsgBoxResult = MsgBox("A mods folder doesn't exist yet in this location. Would you like the mod manager to create it for you?", MsgBoxStyle.YesNo, "Create Mods Folder")
+            If ask = MsgBoxResult.Yes Then
+                MkDir(modPath)
+                txtModsDir.Text = modPath
+                My.Settings.modsFolderPath = modPath
+                My.Settings.Save()
+            Else
+                MsgBox("OK. In that case, please specify the mods folder manually.", MsgBoxStyle.OkOnly, "Create Mods Folder")
+            End If
+        End If
     End Sub
 #End Region
 
@@ -29,6 +61,11 @@ Class MainWindow
 
     ' Clicked the Change Directory button associated with the Mods Directory
     Private Sub ModsFolderDirChangeBtn_Click(sender As Object, e As RoutedEventArgs) Handles modsFolderDirChangeBtn.Click
+        ModsFolderChange()
+    End Sub
+
+    ' Open a directory browser that allows you to select a folder, then save the selection to a user setting to store the selected folder for later use
+    Private Sub ModsFolderChange()
         ' When this is clicked, open a directory dialog
         Dim modsFolderPicker As New CommonOpenFileDialog With {
             .IsFolderPicker = True
@@ -40,8 +77,21 @@ Class MainWindow
     End Sub
 
 #End Region
+
+
+
 #Region "Menu Bar"
 #Region "File Menu"
+    ' Open the directory browser to change the Mods folder when File > Change Mods Directory is clicked
+    Private Sub MenuFile_ChangeModsDir_Click(sender As Object, e As RoutedEventArgs)
+        ModsFolderChange()
+    End Sub
+
+    ' Open the directory browser to change the Avorion Installation directory when File > Change Avorion Installation Directory is clicked
+    Private Sub MenuFile_ChangeAvoDir_Click(sender As Object, e As RoutedEventArgs)
+        AvoInstallDirChange()
+    End Sub
+
     ' Exit the program when File > Exit is clicked
     Private Sub MenuFile_Exit_Click(sender As Object, e As RoutedEventArgs)
         Me.Close()

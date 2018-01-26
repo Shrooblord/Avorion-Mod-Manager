@@ -48,8 +48,8 @@
                 <MenuItem Header="Save Modpack" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16"></MenuItem>
                 <MenuItem Header="Load Modpack" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16"></MenuItem>
                 <Separator Margin="-30,0,0,0"></Separator>
-                <MenuItem Header="Change Avorion Installation Directory" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16"></MenuItem>
-                <MenuItem Header="Change Mods Directory" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16"></MenuItem>
+                <MenuItem Header="Change Avorion Installation Directory" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16" Click="MenuFile_ChangeAvoDir_Click"></MenuItem>
+                <MenuItem Header="Change Mods Directory" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16" Click="MenuFile_ChangeModsDir_Click"></MenuItem>
                 <Separator Margin="-30,0,0,0"></Separator>
                 <MenuItem Header="Exit" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16" Click="MenuFile_Exit_Click"></MenuItem>
             </MenuItem>
