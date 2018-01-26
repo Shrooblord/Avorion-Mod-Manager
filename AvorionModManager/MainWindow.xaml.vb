@@ -86,6 +86,9 @@ Class MainWindow
 #Region "Listbox Uninstalled Mods"
     ' Find all folders inside the Mods Directory and put them in the Uninstalled Mods Listbox
     Private Sub AddAllFoldersToUninstalledListBox(modDir As String)
+        ' First remove all entries that were previously on the list
+        listboxUninstalledMods.Items.Clear()
+
         For Each Dir As String In Directory.GetDirectories(modDir)
             ' Put it as a list entry in the Uninstalled Mods Listbox
             Dim modName As String
