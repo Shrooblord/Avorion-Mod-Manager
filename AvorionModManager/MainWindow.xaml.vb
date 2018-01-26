@@ -37,18 +37,14 @@ Class MainWindow
             If Not My.Settings.modsFolderPath = modPath Then
                 Dim ask As MsgBoxResult = MsgBox("A mods folder was found in this location. Would you like the mod manager to use this folder?", MsgBoxStyle.YesNo, "Select Mods Folder")
                 If ask = MsgBoxResult.Yes Then
-                    txtModsDir.Text = modPath
-                    My.Settings.modsFolderPath = modPath
-                    My.Settings.Save()
+                    ModsFolderChange(modPath)
                 End If
             End If
         Else
                 Dim ask As MsgBoxResult = MsgBox("A mods folder doesn't exist yet in this location. Would you like the mod manager to create it for you?", MsgBoxStyle.YesNo, "Create Mods Folder")
             If ask = MsgBoxResult.Yes Then
                 MkDir(modPath)
-                txtModsDir.Text = modPath
-                My.Settings.modsFolderPath = modPath
-                My.Settings.Save()
+                ModsFolderChange(modPath)
             Else
                 MsgBox("OK. In that case, please specify the mods folder manually.", MsgBoxStyle.OkOnly, "Create Mods Folder")
             End If
@@ -58,36 +54,62 @@ Class MainWindow
 
 #Region "Mods Folder Path"
     ' Read the property of the User Setting detailing the Mods Folder Path, and put it as the value for the text box
-    Private Sub setModsDir(sender As Object, e As EventArgs) Handles txtModsDir.Initialized
+    Private Sub SetModsDir(sender As Object, e As EventArgs) Handles txtModsDir.Initialized
         txtModsDir.Text = My.Settings.modsFolderPath
     End Sub
 
     ' Clicked the Change Directory button associated with the Mods Directory
     Private Sub ModsFolderDirChangeBtn_Click(sender As Object, e As RoutedEventArgs) Handles modsFolderDirChangeBtn.Click
-        ModsFolderChange()
+        ModsFolderPicker()
     End Sub
 
     ' Open a directory browser that allows you to select a folder, then save the selection to a user setting to store the selected folder for later use
-    Private Sub ModsFolderChange()
+    Private Sub ModsFolderPicker()
         ' When this is clicked, open a directory dialog
         Dim modsFolderPicker As New CommonOpenFileDialog With {
             .IsFolderPicker = True
         }
         modsFolderPicker.ShowDialog()
-        txtModsDir.Text = modsFolderPicker.FileName
-        My.Settings.modsFolderPath = modsFolderPicker.FileName
+        ModsFolderChange(modsFolderPicker.FileName)
+    End Sub
+
+    Private Sub ModsFolderChange(modDir As String)
+        txtModsDir.Text = modDir
+        My.Settings.modsFolderPath = modDir
         My.Settings.Save()
+        ' Populate the Uninstalled Mods Listbox
+        AddAllFoldersToUninstalledListBox(modDir)
     End Sub
 
 #End Region
 
+#Region "Listbox Uninstalled Mods"
+    ' Find all folders inside the Mods Directory and put them in the Uninstalled Mods Listbox
+    Private Sub AddAllFoldersToUninstalledListBox(modDir As String)
+        For Each Dir As String In Directory.GetDirectories(modDir)
+            ' Put it as a list entry in the Uninstalled Mods Listbox
+            Dim modName As String
+            modName = Dir
+            ' Replaces the string modDir with an empty string, effectively cutting out the directory leading up to the speficic mod's folder, and leaving
+            ' only the folder's name i.e. the mod's name to be added to the listbox
+            modName = modName.Replace(modDir & "\", "")
+            listboxUninstalledMods.Items.Add(modName)
+        Next
+    End Sub
 
+    ' Attempt to populate the list; see if the mods folder has already been set
+    Private Sub InitListboxUninstalledMods(sender As Object, e As EventArgs) Handles listboxUninstalledMods.Initialized
+        If My.Settings.modsFolderPath <> String.Empty Then
+            AddAllFoldersToUninstalledListBox(My.Settings.modsFolderPath)
+        End If
+    End Sub
+#End Region
 
 #Region "Menu Bar"
 #Region "File Menu"
     ' Open the directory browser to change the Mods folder when File > Change Mods Directory is clicked
     Private Sub MenuFile_ChangeModsDir_Click(sender As Object, e As RoutedEventArgs)
-        ModsFolderChange()
+        ModsFolderPicker()
     End Sub
 
     ' Open the directory browser to change the Avorion Installation directory when File > Change Avorion Installation Directory is clicked

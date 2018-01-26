@@ -23,8 +23,8 @@
                 </LinearGradientBrush>
             </ListBox.Background>
         </ListBox>
-        <ListBox HorizontalAlignment="Left" Height="321" Margin="145,60,0,0" VerticalAlignment="Top" Width="727" Background="#FF7DA0DE" BorderBrush="#FF04174D"/>
-        <ListBox HorizontalAlignment="Left" Height="167" Margin="145,407,0,0" VerticalAlignment="Top" Width="727" BorderBrush="#FF0C1B47" Background="#FF7DA0DE"/>
+        <ListBox x:Name="listboxInstalledMods" HorizontalAlignment="Left" Height="321" Margin="145,60,0,0" VerticalAlignment="Top" Width="727" Background="#FF7DA0DE" BorderBrush="#FF04174D"/>
+        <ListBox x:Name="listboxUninstalledMods" HorizontalAlignment="Left" Height="167" Margin="145,407,0,0" VerticalAlignment="Top" Width="727" BorderBrush="#FF0C1B47" Background="#FF7DA0DE"/>
         <Button Content="Save Modpack" HorizontalAlignment="Left" Margin="877,536,0,0" VerticalAlignment="Top" Width="117" Height="38" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FF04174D" Background="#FFB9D6F9"/>
         <Button Content="Load Modpack" HorizontalAlignment="Left" Margin="877,493,0,0" VerticalAlignment="Top" Width="117" Height="38" BorderBrush="#FF04174D" Background="#FFB9D6F9"/>
         <Button Content="Install Selected" HorizontalAlignment="Left" Margin="877,60,0,0" VerticalAlignment="Top" Width="117" Height="38" Background="#FFB9D6F9" BorderBrush="#FF04174D"/>
