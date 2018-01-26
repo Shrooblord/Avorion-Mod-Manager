@@ -52,6 +52,30 @@ Partial Friend NotInheritable Class MySettings
             Return defaultInstance
         End Get
     End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+    Public Property avorionInstallPath() As String
+        Get
+            Return CType(Me("avorionInstallPath"),String)
+        End Get
+        Set
+            Me("avorionInstallPath") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+    Public Property modsFolderPath() As String
+        Get
+            Return CType(Me("modsFolderPath"),String)
+        End Get
+        Set
+            Me("modsFolderPath") = value
+        End Set
+    End Property
 End Class
 
 Namespace My

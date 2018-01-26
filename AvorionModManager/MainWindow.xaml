@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AvorionModManager"
         mc:Ignorable="d"
-        Title="Avorion Mod Manager" Height="584" Width="1016">
-    <Grid HorizontalAlignment="Left" Height="555" VerticalAlignment="Top" Width="1010" Margin="0,0,0,-2">
+        Title="Shrooblord's Avorion Mod Manager" Height="784" Width="1016">
+    <Grid HorizontalAlignment="Left" Height="753" VerticalAlignment="Top" Width="1010" Margin="0,0,-2,0">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#FF060E2E" Offset="1"/>
@@ -14,20 +14,72 @@
                 <GradientStop Color="#FF5C7ED8"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Label Content="Modpacks" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" HorizontalContentAlignment="Center" FontFamily="Lucida Sans Unicode" FontWeight="Bold" FontSize="16" Height="39" Margin="4,-4,0,0"/>
-        <ListBox HorizontalAlignment="Left" Height="514" Margin="7,26,0,0" VerticalAlignment="Top" Width="130" Background="#FF474A6C"/>
-        <ListBox HorizontalAlignment="Left" Height="321" Margin="145,26,0,0" VerticalAlignment="Top" Width="727" Background="#FF7DA0DE" BorderBrush="#FF04174D"/>
-        <ListBox HorizontalAlignment="Left" Height="167" Margin="145,373,0,0" VerticalAlignment="Top" Width="727" BorderBrush="#FF0C1B47" Background="#FF7DA0DE"/>
-        <Button Content="Save Modpack" HorizontalAlignment="Left" Margin="877,502,0,0" VerticalAlignment="Top" Width="117" Height="38" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Button Content="Load Modpack" HorizontalAlignment="Left" Margin="877,459,0,0" VerticalAlignment="Top" Width="117" Height="38"/>
-        <Button Content="Install Selected" HorizontalAlignment="Left" Margin="877,26,0,0" VerticalAlignment="Top" Width="117" Height="38"/>
-        <Button Content="Install All" HorizontalAlignment="Left" Margin="877,69,0,0" VerticalAlignment="Top" Width="117" Height="38"/>
-        <ComboBox HorizontalAlignment="Left" Height="32" Margin="877,272,0,0" VerticalAlignment="Top" Width="117"/>
-        <Button Content="Check Compatibility" HorizontalAlignment="Left" Margin="877,309,0,0" VerticalAlignment="Top" Width="117" Height="38"/>
-        <Label Content="Avorion Version:" HorizontalAlignment="Left" Margin="877,246,0,0" VerticalAlignment="Top" Width="117" Foreground="#FFBFFB8C"/>
-        <Label Content="Uninstalled Mods" HorizontalAlignment="Left" Height="26" Margin="145,347,0,0" VerticalAlignment="Top" Width="727" HorizontalContentAlignment="Center" FontWeight="Bold" Foreground="#FFCD3B3B"/>
-        <Label Content="Installed Mods" HorizontalAlignment="Left" Height="26" Margin="150,1,0,0" VerticalAlignment="Top" Width="727" HorizontalContentAlignment="Center" FontWeight="Bold" Foreground="#FF05D60E"/>
-        <Button Content="Uninstall Selected" HorizontalAlignment="Left" Margin="877,112,0,0" VerticalAlignment="Top" Width="117" Height="38"/>
-        <Button Content="Uninstall All" HorizontalAlignment="Left" Margin="877,155,0,0" VerticalAlignment="Top" Width="117" Height="38"/>
+        <Label Content="Modpacks" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" HorizontalContentAlignment="Center" FontFamily="Lucida Sans Unicode" FontWeight="Bold" FontSize="16" Height="39" Margin="4,30,0,0"/>
+        <ListBox HorizontalAlignment="Left" Height="514" Margin="7,60,0,0" VerticalAlignment="Top" Width="130" BorderBrush="#FF0C1B47">
+            <ListBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF19004F" Offset="1"/>
+                    <GradientStop Color="#FF8198FF"/>
+                </LinearGradientBrush>
+            </ListBox.Background>
+        </ListBox>
+        <ListBox HorizontalAlignment="Left" Height="321" Margin="145,60,0,0" VerticalAlignment="Top" Width="727" Background="#FF7DA0DE" BorderBrush="#FF04174D"/>
+        <ListBox HorizontalAlignment="Left" Height="167" Margin="145,407,0,0" VerticalAlignment="Top" Width="727" BorderBrush="#FF0C1B47" Background="#FF7DA0DE"/>
+        <Button Content="Save Modpack" HorizontalAlignment="Left" Margin="877,536,0,0" VerticalAlignment="Top" Width="117" Height="38" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FF04174D" Background="#FFB9D6F9"/>
+        <Button Content="Load Modpack" HorizontalAlignment="Left" Margin="877,493,0,0" VerticalAlignment="Top" Width="117" Height="38" BorderBrush="#FF04174D" Background="#FFB9D6F9"/>
+        <Button Content="Install Selected" HorizontalAlignment="Left" Margin="877,60,0,0" VerticalAlignment="Top" Width="117" Height="38" Background="#FFB9D6F9" BorderBrush="#FF04174D"/>
+        <Button Content="Install All" HorizontalAlignment="Left" Margin="877,103,0,0" VerticalAlignment="Top" Width="117" Height="38" BorderBrush="#FF04174D" Background="#FFB9D6F9"/>
+        <Label Content="Uninstalled Mods" HorizontalAlignment="Left" Height="26" Margin="145,381,0,0" VerticalAlignment="Top" Width="727" HorizontalContentAlignment="Center" FontWeight="Bold" Foreground="#FFCD3B3B"/>
+        <Label Content="Installed Mods" HorizontalAlignment="Left" Height="26" Margin="150,35,0,0" VerticalAlignment="Top" Width="727" HorizontalContentAlignment="Center" FontWeight="Bold" Foreground="#FF05D60E"/>
+        <Button Content="Uninstall Selected" HorizontalAlignment="Left" Margin="877,146,0,0" VerticalAlignment="Top" Width="117" Height="38" BorderBrush="#FF04174D" Background="#FFB9D6F9"/>
+        <Button Content="Uninstall All" HorizontalAlignment="Left" Margin="877,189,0,0" VerticalAlignment="Top" Width="117" Height="38" BorderBrush="#FF04174D" Background="#FFB9D6F9"/>
+        <Button x:Name="modsFolderDirChangeBtn" Content="Change Directory" HorizontalAlignment="Left" Margin="877,654,0,0" VerticalAlignment="Top" Width="117" Height="21" BorderBrush="#FF04174D" Background="#FFB9D6F9"/>
+        <Button x:Name="avorionDirChangeBtn" Content="Change Directory" HorizontalAlignment="Left" Margin="877,604,0,0" VerticalAlignment="Top" Width="117" Height="21" BorderBrush="#FF04174D" Background="#FFB9D6F9"/>
+        <TextBox x:Name="txtAvoDir" HorizontalAlignment="Left" Height="21" Margin="7,604,0,0" TextWrapping="Wrap" Text="?" VerticalAlignment="Top" Width="865" Background="#FF000942" Foreground="#FFD6E8E8" BorderBrush="#FF98B0F5"/>
+        <TextBox x:Name="txtModsDir" HorizontalAlignment="Left" Height="21" Margin="7,654,0,0" TextWrapping="Wrap" Text="?" VerticalAlignment="Top" Width="865" Background="#FF000942" Foreground="#FFD6E8E8" BorderBrush="#FF98B0F5"/>
+        <Label Content="Avorion Installation Directory" HorizontalAlignment="Left" Height="26" Margin="7,579,0,0" VerticalAlignment="Top" Width="865" FontWeight="Bold" Foreground="#FF05BAD6"/>
+        <Label Content="Mods Directory" HorizontalAlignment="Left" Height="26" Margin="7,628,0,0" VerticalAlignment="Top" Width="865" FontWeight="Bold" Foreground="#FF05BAD6"/>
+        <ProgressBar x:Name="progBar" HorizontalAlignment="Left" Height="21" Margin="7,705,0,0" VerticalAlignment="Top" Width="987" Foreground="#FF05CCEC" Background="#FF000942" BorderBrush="#FF98B0F5"/>
+        <Label x:Name="lblStatus" Content="Status: Ready" HorizontalAlignment="Left" Height="26" Margin="7,679,0,0" VerticalAlignment="Top" Width="865" FontWeight="Bold" Foreground="#FF05D60E"/>
+        <Button Content="See Issues" HorizontalAlignment="Left" Margin="877,300,0,0" VerticalAlignment="Top" Width="117" Height="38" BorderBrush="#FF04174D" Background="#FFB9D6F9"/>
+        <Button Content="View Log" HorizontalAlignment="Left" Margin="877,343,0,0" VerticalAlignment="Top" Width="117" Height="38" BorderBrush="#FF04174D" Background="#FFB9D6F9"/>
+        <Menu Height="25" VerticalAlignment="Top" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16">
+            <MenuItem Header="File" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16">
+                <MenuItem Header="Save Modpack" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16"></MenuItem>
+                <MenuItem Header="Load Modpack" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16"></MenuItem>
+                <Separator Margin="-30,0,0,0"></Separator>
+                <MenuItem Header="Change Avorion Installation Directory" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16"></MenuItem>
+                <MenuItem Header="Change Mods Directory" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16"></MenuItem>
+                <Separator Margin="-30,0,0,0"></Separator>
+                <MenuItem Header="Exit" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16" Click="MenuFile_Exit_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Edit" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16">
+                <MenuItem Header="Undo" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16"></MenuItem>
+                <MenuItem Header="Redo" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16"></MenuItem>
+                <Separator Margin="-30,0,0,0"></Separator>
+                <MenuItem Header="Cut" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16"></MenuItem>
+                <MenuItem Header="Copy" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16"></MenuItem>
+                <MenuItem Header="Paste" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16"></MenuItem>
+                <MenuItem Header="Delete" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16"></MenuItem>
+                <Separator Margin="-30,0,0,0"></Separator>
+                <MenuItem Header="Select All" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="View" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16">
+                <MenuItem Header="Open Avorion Installation Directory in Explorer" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16"></MenuItem>
+                <MenuItem Header="Open Mods Directory in Explorer" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Window" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16">
+                <MenuItem Header="Issues" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16"></MenuItem>
+                <MenuItem Header="Log" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Help" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16">
+                <MenuItem Header="Tutorial" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16"></MenuItem>
+                <MenuItem Header="Documentation" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16"></MenuItem>
+                <Separator Margin="-30,0,0,0"></Separator>
+                <MenuItem Header="Avorion Mod Manager Homepage" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16"></MenuItem>
+                <Separator Margin="-30,0,0,0"></Separator>
+                <MenuItem Header="About" Background="#FF7DA0DE" BorderBrush="#FF98B0F5" FontFamily="Lucida Sans Unicode" FontSize="16"></MenuItem>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>
