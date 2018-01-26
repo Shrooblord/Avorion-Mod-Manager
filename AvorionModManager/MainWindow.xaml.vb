@@ -33,14 +33,17 @@ Class MainWindow
         Dim modPath As String
         modPath = path & "\mods"
         If Directory.Exists(modPath) Then
-            Dim ask As MsgBoxResult = MsgBox("A mods folder was found in this location. Would you like the mod manager to use this folder?", MsgBoxStyle.YesNo, "Select Mods Folder")
-            If ask = MsgBoxResult.Yes Then
-                txtModsDir.Text = modPath
-                My.Settings.modsFolderPath = modPath
-                My.Settings.Save()
+            ' Only ask this if the Mods Folder User Setting doesn't already point to the folder we found
+            If Not My.Settings.modsFolderPath = modPath Then
+                Dim ask As MsgBoxResult = MsgBox("A mods folder was found in this location. Would you like the mod manager to use this folder?", MsgBoxStyle.YesNo, "Select Mods Folder")
+                If ask = MsgBoxResult.Yes Then
+                    txtModsDir.Text = modPath
+                    My.Settings.modsFolderPath = modPath
+                    My.Settings.Save()
+                End If
             End If
         Else
-            Dim ask As MsgBoxResult = MsgBox("A mods folder doesn't exist yet in this location. Would you like the mod manager to create it for you?", MsgBoxStyle.YesNo, "Create Mods Folder")
+                Dim ask As MsgBoxResult = MsgBox("A mods folder doesn't exist yet in this location. Would you like the mod manager to create it for you?", MsgBoxStyle.YesNo, "Create Mods Folder")
             If ask = MsgBoxResult.Yes Then
                 MkDir(modPath)
                 txtModsDir.Text = modPath
